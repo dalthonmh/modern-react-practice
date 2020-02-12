@@ -11,7 +11,7 @@ const HooksContainer1 = () => {
     const [stateValue, setValue] = useState(0);
     const [useEffectValue, setUseEffectValue] = useState(null);
     // const [state, dispatch] = useReducer(Reducer, initial state)
-    const [state, dispatch] = useReducer(Reducer.HooksReducer, Reducer.initialState)
+    const [state, dispatch] = useReducer(Reducer.HooksReducer, Reducer.initialState);
 
     useEffect(() => {
         setTimeout(() => {setUseEffectValue('Hola mundo')}, 3000 )
