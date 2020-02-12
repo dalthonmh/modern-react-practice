@@ -67,6 +67,11 @@ const HooksContainer1 = () => {
         </div>
         <br/>
         <div>
+                <p>Context change: {context.stateContextChange ? context.stateContextChange : 'No input change context value'}</p>
+                <p>Context submit: {context.stateContextSubmit ? context.stateContextSubmit : 'No input submit context value'}</p>
+        </div>
+        <br/>
+        <div>
             {
                 state.statePropHook
                 ? <p>statePropHook: True</p>
