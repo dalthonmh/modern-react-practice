@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useReducer } from 'react';
+import * as Reducer from '../store/hooks_state/hooks_reducer';
+import * as ACTIONS from '../store/actions/actions';
 
 const HooksContainer1 = () => {
 
@@ -7,7 +8,9 @@ const HooksContainer1 = () => {
     // const stateValue = countStateValue[0]; // First item in a pair
     // const setValue = countStateValue[1]; // Second item in a pair
     const [stateValue, setValue] = useState(0);
-    const [useEffectValue, setUseEffectValue] = useState(null)
+    const [useEffectValue, setUseEffectValue] = useState(null);
+    // const [state, dispatch] = useReducer(Reducer, initial state)
+    const [state, dispatch] = useReducer(Reducer.HooksReducer, Reducer.initialState)
 
     useEffect(() => {
         setTimeout(() => {setUseEffectValue('Hola mundo')}, 3000 )
@@ -25,6 +28,15 @@ const HooksContainer1 = () => {
         setUseEffectValue('some string')
     }
 
+    const handleDispatchTrue = () => {
+        dispatch(ACTIONS.success())
+    }
+
+    const handleDispatchFalse = () => {
+        dispatch(ACTIONS.failure())
+    }
+
+
     return(
       <div>
         React Hooks
@@ -32,6 +44,8 @@ const HooksContainer1 = () => {
         <button onClick={() => incrementValue()}>Inc Local State</button>
         <button onClick={() => decrementValue()}>Dec Local State</button>
         <button onClick={() => changeUseStateValue()}>Change use state value</button>
+        <button onClick={() => handleDispatchTrue()}>statePropHook true</button>
+        <button onClick={() => handleDispatchFalse()}>statePropHook false</button>
         <br/>
         <div>
             <p>Local State: {stateValue}</p>
@@ -40,6 +54,14 @@ const HooksContainer1 = () => {
         <div>{ useEffectValue
                 ? <p>{useEffectValue}</p>
                 : <p>No value</p>
+            }
+        </div>
+        <br/>
+        <div>
+            {
+                state.statePropHook
+                ? <p>statePropHook: True</p>
+                : <p>statePropHook: False</p>
             }
         </div>
       </div>

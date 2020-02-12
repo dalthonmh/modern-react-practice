@@ -8,7 +8,7 @@ export const FAILURE = {
   type: ACTION_TYPES.FAILURE
 }
 
-
+// Actions creator
 export const success = () => {
   return {
     type: ACTION_TYPES.SUCCESS
